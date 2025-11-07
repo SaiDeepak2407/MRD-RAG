@@ -1,6 +1,7 @@
-%%writefile requirements.txt
 fastapi
 uvicorn
-cohere
 neo4j
-tqdm
+cohere
+python-dotenv
+pydantic
+requests
