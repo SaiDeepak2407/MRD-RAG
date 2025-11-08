@@ -13,17 +13,6 @@ NEO4J_USER = os.getenv("NEO4J_USER")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 COHERE_KEY = os.getenv("COHERE_KEY")
 
-missing_vars = [k for k, v in {
-    "NEO4J_URI": NEO4J_URI,
-    "NEO4J_USER": NEO4J_USER,
-    "NEO4J_PASSWORD": NEO4J_PASSWORD,
-    "COHERE_KEY": COHERE_KEY
-}.items() if not v]
-
-if missing_vars:
-    print(f"❌ Missing environment variables: {', '.join(missing_vars)}")
-    sys.exit(1)
-    
 app = FastAPI(title="MRD-RAG Doctor Chatbot API", version="2.9")
 
 app.add_middleware(
@@ -71,10 +60,16 @@ class BiomedicalRAG:
             print(f"✓ Using fallback model '{self.model}'")
 
     def _prompt(self, conversation, context):
-        convo_text = "\n".join([
-            f"Patient: {c['patient']}\nDoctor: {c.get('doctor', '')}" for c in conversation
-        ])
-        return f"""
+            convo_text = ""
+            for c in conversation:
+                patient_msg = c.get("patient")
+                doctor_msg = c.get("doctor")
+                if patient_msg:
+                    convo_text += f"Patient: {patient_msg}\n"
+                if doctor_msg:
+                    convo_text += f"Doctor: {doctor_msg}\n"
+
+            return f"""
 You are a kind, logical, biomedical doctor chatbot.
 
 PATIENT CONVERSATION HISTORY:
