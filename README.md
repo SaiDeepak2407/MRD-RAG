@@ -1,167 +1,149 @@
-# 🩺 MRD-RAG Doctor Chatbot
+# 🧠 RAGnosis – AI Doctor Chatbot  
 
-*AI-Powered Medical Diagnosis Assistant using Neo4j + Cohere + FastAPI*
+*AI-Powered Medical Diagnosis Assistant built with FastAPI, Neo4j, and Cohere*  
 
-![MRD-RAG Banner](https://img.shields.io/badge/AI%20Healthcare-MRD-RAG-dc2626?style=for-the-badge\&logo=python\&logoColor=white)
-
----
-
-## 🚀 Overview
-
-**MRD-RAG Smart Diagnosis** is an intelligent healthcare chatbot that uses **Retrieval-Augmented Generation (RAG)** to assist users in understanding potential medical conditions based on their symptoms.
-
-It combines:
-
-* 🧠 **Cohere LLMs** — for biomedical natural language understanding
-* 🧬 **Neo4j Graph Database** — for retrieving verified medical knowledge
-* ⚡ **FastAPI** — for a lightweight, fast backend service
+![RAGnosis Banner](https://img.shields.io/badge/AI%20Healthcare-RAGnosis-dc2626?style=for-the-badge&logo=python&logoColor=white)
 
 ---
 
-## 🧩 Features
+## 🚀 Overview  
 
-✅ Conversational medical diagnosis assistant
-✅ Follow-up questioning for better accuracy
-✅ Real-time inference via Cohere
-✅ Secure connection to Neo4j medical graph
-✅ Deployed using **Render** for 24×7 access
+**RAGnosis** (Retrieval-Augmented Diagnosis) is an intelligent medical chatbot that helps users understand possible conditions based on symptoms.  
+It combines **LLM reasoning** with **graph-based medical knowledge retrieval** for safe and context-aware responses.  
 
----
-
-## 🗂️ Tech Stack
-
-| Layer          | Technology                           |
-| -------------- | ------------------------------------ |
-| **Frontend**   | HTML, CSS, JavaScript                |
-| **Backend**    | FastAPI (Python)                     |
-| **LLM API**    | Cohere (Command-R / Command-A)       |
-| **Database**   | Neo4j AuraDB                         |
-| **Deployment** | Render (Backend), Netlify (Frontend) |
+### 🔍 Powered by
+- 🧠 **Cohere Command Models** — for biomedical natural-language understanding  
+- 🧬 **Neo4j AuraDB** — for verified medical graph retrieval  
+- ⚡ **FastAPI** — for lightweight, production-grade API hosting  
 
 ---
 
-## ⚙️ Setup Instructions
+## ✨ Features  
 
-### 1️⃣ Clone the repository
+✅ Conversational symptom-based diagnosis assistant  
+✅ Context-aware follow-up questioning for higher accuracy  
+✅ RAG pipeline: Neo4j + Cohere integration  
+✅ Secure, scalable FastAPI backend  
+✅ Deployed seamlessly on **Vercel** for global access  
 
+---
+
+## 🧩 Tech Stack  
+
+| Layer          | Technology                              |
+|----------------|------------------------------------------|
+| **Frontend**   | HTML, CSS, JavaScript (Vanilla or React) |
+| **Backend**    | FastAPI (Python)                         |
+| **LLM API**    | Cohere (Command-R / Command-A)           |
+| **Database**   | Neo4j AuraDB                             |
+| **Deployment** | Vercel (Backend)                         |
+
+---
+
+## ⚙️ Setup Instructions  
+
+### 1️⃣ Clone the Repository  
 ```bash
-git clone https://github.com/yourusername/mrd_rag_backend.git
-cd mrd_rag_backend
-```
-
-### 2️⃣ Create a virtual environment
-
-```bash
+git clone https://github.com/yourusername/ragnosis-backend.git
+cd ragnosis-backend
+2️⃣ Create and Activate a Virtual Environment
 python -m venv venv
-source venv/bin/activate   # or venv\Scripts\activate on Windows
-```
+# On macOS/Linux
+source venv/bin/activate
+# On Windows
+venv\Scripts\activate
 
-### 3️⃣ Install dependencies
-
-```bash
+3️⃣ Install Dependencies
 pip install -r requirements.txt
-```
 
-### 4️⃣ Add environment variables
+4️⃣ Add Environment Variables
 
-Create a `.env` file or use Render’s dashboard:
+Create a .env file in the project root:
 
-```
 COHERE_KEY=your_cohere_api_key
 NEO4J_URI=neo4j+s://your_database_uri
 NEO4J_USER=neo4j
 NEO4J_PASSWORD=your_neo4j_password
-```
 
----
-
-## 🧠 Run Locally
-
-```bash
+🧠 Run Locally
 uvicorn main:app --host 0.0.0.0 --port 8000
-```
 
-Open your browser → [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-You’ll see an interactive Swagger UI where you can test your chatbot.
 
----
+Then open your browser → http://127.0.0.1:8000/docs
 
-## 🌐 Deploy on Render
+You’ll see the interactive Swagger UI where you can test your chatbot.
 
-1. Push your backend to GitHub
-2. Create a **new Web Service** on [Render](https://render.com)
-3. Connect the repo and use these settings:
+🌐 Deployment on Vercel
 
-   * **Build Command:** `pip install -r requirements.txt`
-   * **Start Command:** `uvicorn main:app --host 0.0.0.0 --port 10000`
-4. Add environment variables in Render’s dashboard
-5. After a few minutes, your API will be live 🎉
+Push your backend code to GitHub.
 
-Example URL:
+On Vercel
+, create a New Project and import your repo.
 
-```
-https://mrd-rag.onrender.com
-```
+In the setup:
 
----
+Framework Preset: “Other”
 
-## 🔗 Frontend Integration
+Build Command: pip install -r requirements.txt
 
-In your `script.js`, update the backend endpoint:
+Output Directory: .
 
-```js
-const BACKEND_URL = "https://mrd-rag.onrender.com";
-```
+Start Command: uvicorn main:app --host 0.0.0.0 --port 8000
 
-Now your website can interact directly with the deployed FastAPI backend.
+Add environment variables under Settings → Environment Variables.
 
----
+Deploy — your API will go live at:
 
-## 📬 API Endpoints
+https://ragnosis.vercel.app
 
-| Method   | Endpoint   | Description                                                  |
-| -------- | ---------- | ------------------------------------------------------------ |
-| **GET**  | `/`        | Returns backend status                                       |
-| **POST** | `/predict` | Accepts user message and conversation, returns chatbot reply |
+🔗 Frontend Integration
 
-### Example Request:
+In your frontend script.js or .env file, update the backend endpoint:
 
-```json
+const BACKEND_URL = "https://ragnosis.vercel.app";
+
+
+Then call the API:
+
+const response = await fetch(`${BACKEND_URL}/predict`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    message: "I have a headache and nausea",
+    conversation: []
+  })
+});
+
+📬 API Endpoints
+Method	Endpoint	Description
+GET	/	Returns API status
+POST	/predict	Accepts user message & conversation; returns chatbot reply
+Example Request
 {
   "message": "I have a headache and nausea",
   "conversation": []
 }
-```
 
-### Example Response:
-
-```json
+Example Response
 {
   "response": "Do you also have sensitivity to light or vomiting?",
   "conversation": [...],
   "context_preview": "..."
 }
-```
 
----
+⚠️ Notes
 
-## 🛡️ Notes
+RAGnosis is intended for educational and research purposes only.
 
-* MRD-RAG is designed for **educational and research use** only.
-* It should **not** replace professional medical consultation.
-* Cohere and Neo4j credentials must remain **private**.
+It must not replace professional medical consultation.
 
----
+Cohere and Neo4j credentials should always remain private.
 
-## 👩‍💻 Contributors
+👩‍💻 Contributor
 
-**Sai Deepak** – Project Lead & Developer
+Sai Deepak
 
----
+📄 License
 
-## 📄 License
-
-MIT License © 2025 MRD-RAG Team
-Feel free to modify and build upon this project for learning or research.
-
----
+MIT License © 2025 RAGnosis Team
+Feel free to use, modify, and extend for research or learning purposes.
