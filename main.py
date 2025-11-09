@@ -13,7 +13,7 @@ NEO4J_USER = os.getenv("NEO4J_USER")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 COHERE_KEY = os.getenv("COHERE_KEY")
 
-app = FastAPI(title="MRD-RAG Doctor Chatbot API", version="2.9")
+app = FastAPI(title="RAGnosis Doctor Chatbot API", version="2.9")
 
 app.add_middleware(
     CORSMiddleware,
@@ -108,7 +108,7 @@ pipeline_instance = DoctorChatPipeline(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, CO
 
 @app.get("/")
 def home():
-    return {"message": "✅ MRD-RAG Doctor Chatbot Backend Running", "status": "ok"}
+    return {"message": "✅ RAGnosis Doctor Chatbot Backend Running", "status": "ok"}
 
 @app.post("/predict")
 def predict(data: dict):
